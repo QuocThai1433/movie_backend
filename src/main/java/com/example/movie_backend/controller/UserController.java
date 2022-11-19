@@ -18,7 +18,7 @@ public class UserController {
     private final UserRepository userRepository;
 
     @PostMapping("login")
-    public ResponseEntity<LoginResponse> login(LoginRequest request) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         // Tìm user với username
         Optional<User> optionalUser = userRepository.findByFilter(request.getUsername());
         if (optionalUser.isEmpty()) {
@@ -61,7 +61,7 @@ public class UserController {
     }
 
     @PutMapping("update")
-    public ResponseEntity<User> update(User user) {
+    public ResponseEntity<User> update(@RequestBody User user) {
         return ResponseEntity.ok(userRepository.save(user));
     }
 
