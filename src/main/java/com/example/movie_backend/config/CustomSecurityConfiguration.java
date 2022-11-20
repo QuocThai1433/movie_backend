@@ -1,4 +1,4 @@
-package com.example.movie_backend.config.security;
+package com.example.movie_backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,8 @@ public class CustomSecurityConfiguration {
                         .antMatchers("/swagger-ui.html",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
-                                "/api/v1/user/**")
+                                "/api/v1/user/register",
+                                "/api/v1/user/login")
                         .permitAll()
                         .anyRequest().authenticated()
                 )

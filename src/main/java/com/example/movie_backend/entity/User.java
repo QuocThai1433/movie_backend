@@ -2,36 +2,45 @@ package com.example.movie_backend.entity;
 
 import com.example.movie_backend.entity.enumerate.UserType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Table(name = "users")
 @Getter
 @Setter
 @Entity
+@SuperBuilder
+@NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+    private UUID id;
 
-    @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "username", unique = true)
+    private String firstName;
+
+    private String lastName;
+
     private String username;
 
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
     private UserType type;
 
-    @Column(name = "movie_package_id")
+
     private Integer moviePackageId;
 }
