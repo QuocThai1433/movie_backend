@@ -48,6 +48,7 @@ public class UserService implements IUserService {
                 .phoneNumber(request.getPhoneNumber())
                 .type(UserType.NORMAL)
                 .build();
+
         userRepository.save(user);
 
         return RegisterResponse.builder()

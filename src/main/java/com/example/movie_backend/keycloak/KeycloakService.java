@@ -56,7 +56,6 @@ public class KeycloakService implements IKeycloakService{
 
         return UUID.fromString(userId);
     }
-
     @Override
     public AccessTokenResponse token(String username, String password) {
         return authzClient.obtainAccessToken(username, password);
