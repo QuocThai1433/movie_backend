@@ -34,4 +34,6 @@ public class User {
 
     @Column(name = "movie_package_id")
     private Integer moviePackageId;
+
+    private String namePro;
 }

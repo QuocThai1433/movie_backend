@@ -11,10 +11,16 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
+import java.util.Objects;
 
 @EnableWebSecurity
 @Configuration
 public class CustomSecurityConfiguration {
+    private final CommonProperties commonProperties;
+
+    public CustomSecurityConfiguration(CommonProperties commonProperties) {
+        this.commonProperties = commonProperties;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -22,28 +28,46 @@ public class CustomSecurityConfiguration {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+        //
         corsConfig(http);
+        //
+        permitAll(http);
 
-        http
-                .authorizeHttpRequests(authorize -> authorize
-                        .antMatchers("/swagger-ui.html",
-                                "/swagger-ui/**",
-                                "/v3/api-docs/**",
-                                "/api/v1/user/**")
-                        .permitAll()
-                        .anyRequest().authenticated()
-                )
-                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+        http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
 
         return http.build();
     }
 
+    /**
+     *
+     * @param http
+     * @throws Exception
+     */
+    private void permitAll(HttpSecurity http) throws Exception {
+        if (!Objects.isNull(commonProperties.getPermitAllPathPatterns())) {
+            for (String path : commonProperties.getPermitAllPathPatterns()) {
+                http.authorizeHttpRequests().antMatchers(path).permitAll();
+            }
+        }
+
+        http.authorizeHttpRequests().anyRequest().authenticated();
+    }
+
+    /**
+     *
+     * @param http
+     * @throws Exception
+     */
     private void corsConfig(HttpSecurity http) throws Exception {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(List.of("http://localhost:8081"));
+//        configuration.setAllowCredentials(true);
+        if (!Objects.isNull(commonProperties.getCors().getOrigins())) {
+            configuration.setAllowedOrigins(commonProperties.getCors().getOrigins());
+        }
+
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         http.cors(cors -> cors.configurationSource(source));

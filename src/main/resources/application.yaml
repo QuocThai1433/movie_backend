@@ -1,5 +1,3 @@
-
-
 server:
   port: ${SERVER_PORT:8081}
 spring:
@@ -10,7 +8,7 @@ spring:
   datasource:
     url: ${DATABASE_URL:jdbc:mysql://localhost:3306/movie_website}
     username: ${DATABASE_USER:root}
-    password: ${DATABASE_PASSWORD:123456}
+    password: ${DATABASE_PASSWORD:1234}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       pool-name: hikari-id
@@ -41,3 +39,26 @@ spring:
         jwt:
           jwk-set-uri: ${KEYCLOAK_URI:http://localhost:8080}/realms/${PROFILE_REALM:thai_realm}/protocol/openid-connect/certs
           issuer-uri: ${KEYCLOAK_URI:http://localhost:8080}/realms/${PROFILE_REALM:thai_realm}
+
+common:
+  permit-all-path-patterns:
+    - /swagger-ui.html/**
+    - /v3/api-docs/**
+    - /swagger-ui/**
+    - /api/v1/user/login
+    - /test/**
+  cors:
+    origins:
+      - http://localhost:8081
+      - http://localhost:3000
+
+#thai:
+#  name: thai
+#  age: 18
+#  clazz:
+#    name: lop 1
+#    ten-giao-vien: giao vien 1
+#  levels:
+#    - mot
+#    - hai
+#    - ba
