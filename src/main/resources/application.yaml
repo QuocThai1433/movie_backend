@@ -1,3 +1,5 @@
+
+
 server:
   port: ${SERVER_PORT:8081}
 spring:
@@ -62,3 +64,11 @@ common:
 #    - mot
 #    - hai
 #    - ba
+
+
+keycloak:
+  auth-server-url: ${KEYCLOAK_URI:http://localhost:8080}
+  realm: ${PROFILE_REALM:thai_realm}
+  resource: ${BIZZONE_ID_CLIENT_ID:movie_client_id}
+  credentials:
+    secret: ${BIZZONE_ID_CLIENT_SECRET:nv4yJkz8IDi0aqeg2lJUhi9PdZAC7tVW}

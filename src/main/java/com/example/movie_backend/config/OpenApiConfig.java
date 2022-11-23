@@ -1,4 +1,4 @@
-package com.example.movie_backend.config.security;
+package com.example.movie_backend.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.security.SecuritySchemes;
         )
 })
 @OpenAPIDefinition(
-        info = @Info(title = "Bizzone ID API", version = "1.0.0", description = "Documentation Bizzone ID v1.0.0"),
+        info = @Info(title = "Movie API", version = "1.0.0", description = "Documentation Movie v1.0.0"),
         security = @SecurityRequirement(name = "Authorization")
 )
 public class OpenApiConfig {

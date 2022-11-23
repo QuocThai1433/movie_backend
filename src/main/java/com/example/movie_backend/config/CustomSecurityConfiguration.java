@@ -1,4 +1,4 @@
-package com.example.movie_backend.config.security;
+package com.example.movie_backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
