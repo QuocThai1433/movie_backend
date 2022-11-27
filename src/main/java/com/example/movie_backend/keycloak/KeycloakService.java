@@ -43,6 +43,7 @@ public class KeycloakService implements IKeycloakService{
         userRepresentation.setEmail(request.getEmail());
         userRepresentation.setFirstName(request.getFistName());
         userRepresentation.setLastName(request.getLastName());
+        userRepresentation.setEmailVerified(true);
         userRepresentation.setEnabled(true);
 
         UsersResource usersResource = getUsersResource();

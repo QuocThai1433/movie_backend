@@ -45,6 +45,6 @@ spring:
 keycloak:
   auth-server-url: ${KEYCLOAK_URI:http://localhost:8080}
   realm: ${PROFILE_REALM:movie-realm}
-  resource: ${BIZZONE_ID_CLIENT_ID:movie-client}
+  resource: ${BIZZONE_ID_CLIENT_ID:movie-client-id}
   credentials:
-    secret: ${BIZZONE_ID_CLIENT_SECRET:RNmrkjL01yQmQ0jEz8lpCmuibCpRUSCI}
+    secret: ${BIZZONE_ID_CLIENT_SECRET:gkNEmbt9ArSpdKkI5dbhcZD15IztCzvv}
