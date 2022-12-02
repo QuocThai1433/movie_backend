@@ -2,8 +2,10 @@ package com.example.movie_backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Table(name = "movie")
 @Getter
@@ -11,9 +13,13 @@ import javax.persistence.*;
 @Entity
 public class Movie {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "name")
     private String name;

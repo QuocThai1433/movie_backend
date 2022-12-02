@@ -3,8 +3,10 @@ package com.example.movie_backend.entity;
 import com.example.movie_backend.entity.enumerate.MoviePackageType;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Table(name = "movie_package")
 @Getter
@@ -12,9 +14,13 @@ import javax.persistence.*;
 @Entity
 public class MoviePackage {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
