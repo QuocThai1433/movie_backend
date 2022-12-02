@@ -6,7 +6,7 @@ import com.example.movie_backend.model.user.LoginRequest;
 import com.example.movie_backend.model.user.LoginResponse;
 import com.example.movie_backend.model.user.RegisterRequest;
 import com.example.movie_backend.model.user.RegisterResponse;
-import com.example.movie_backend.service.interfaces.IUserService;
+import com.example.movie_backend.services.interfaces.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

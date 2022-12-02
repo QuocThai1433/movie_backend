@@ -1,5 +1,3 @@
-
-
 server:
   port: ${SERVER_PORT:8081}
 spring:
@@ -39,8 +37,8 @@ spring:
     oauth2:
       resource-server:
         jwt:
-          jwk-set-uri: ${KEYCLOAK_URI:http://localhost:8080}/realms/${PROFILE_REALM:thai_realm}/protocol/openid-connect/certs
-          issuer-uri: ${KEYCLOAK_URI:http://localhost:8080}/realms/${PROFILE_REALM:thai_realm}
+          jwk-set-uri: ${KEYCLOAK_URI:http://localhost:8080}/realms/${PROFILE_REALM:movie_website_realm}/protocol/openid-connect/certs
+          issuer-uri: ${KEYCLOAK_URI:http://localhost:8080}/realms/${PROFILE_REALM:movie_website_realm}
 
 common:
   permit-all-path-patterns:
@@ -48,6 +46,7 @@ common:
     - /v3/api-docs/**
     - /swagger-ui/**
     - /api/v1/user/login
+    - /api/v1/user/register
     - /test/**
   cors:
     origins:
@@ -68,7 +67,7 @@ common:
 
 keycloak:
   auth-server-url: ${KEYCLOAK_URI:http://localhost:8080}
-  realm: ${PROFILE_REALM:thai_realm}
-  resource: ${BIZZONE_ID_CLIENT_ID:movie_client_id}
+  realm: ${PROFILE_REALM:movie_website_realm}
+  resource: ${BIZZONE_ID_CLIENT_ID:movie_website_client}
   credentials:
-    secret: ${BIZZONE_ID_CLIENT_SECRET:nv4yJkz8IDi0aqeg2lJUhi9PdZAC7tVW}
+    secret: ${BIZZONE_ID_CLIENT_SECRET:zi0hI2cgqVDqGFa1N4jt0iuGI9078GNX}

@@ -1,4 +1,4 @@
-package com.example.movie_backend.service;
+package com.example.movie_backend.services;
 
 import com.example.movie_backend.entity.User;
 import com.example.movie_backend.entity.enumerate.UserType;
@@ -8,22 +8,25 @@ import com.example.movie_backend.model.user.LoginResponse;
 import com.example.movie_backend.model.user.RegisterRequest;
 import com.example.movie_backend.model.user.RegisterResponse;
 import com.example.movie_backend.repository.UserRepository;
-import com.example.movie_backend.service.interfaces.IUserService;
+import com.example.movie_backend.services.interfaces.IUserService;
 import org.keycloak.representations.AccessTokenResponse;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
-public class UserService implements IUserService {
+public class UserService extends BaseService<User,Integer> implements IUserService {
     private final IKeycloakService iKeycloakService;
     private final UserRepository userRepository;
 
-    public UserService(IKeycloakService iKeycloakService, UserRepository userRepository) {
+    public UserService(JpaRepository<User, Integer> repository, IKeycloakService iKeycloakService, UserRepository userRepository) {
+        super(repository);
         this.iKeycloakService = iKeycloakService;
         this.userRepository = userRepository;
     }
+
 
     @Override
     public LoginResponse login(LoginRequest request) {

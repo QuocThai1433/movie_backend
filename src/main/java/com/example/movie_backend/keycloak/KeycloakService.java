@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import java.util.UUID;
 
 @Component
-public class KeycloakService implements IKeycloakService{
+public class KeycloakService implements IKeycloakService {
     private final AuthzClient authzClient;
     private final Keycloak keycloak;
 
@@ -39,7 +39,7 @@ public class KeycloakService implements IKeycloakService{
     @Override
     public UUID register(RegisterRequest request) {
         UserRepresentation userRepresentation = new UserRepresentation();
-        userRepresentation.setUsername(request.getPhoneNumber());
+        userRepresentation.setUsername(request.getUsername());
         userRepresentation.setEmail(request.getEmail());
         userRepresentation.setFirstName(request.getFistName());
         userRepresentation.setLastName(request.getLastName());
@@ -56,6 +56,7 @@ public class KeycloakService implements IKeycloakService{
 
         return UUID.fromString(userId);
     }
+
     @Override
     public AccessTokenResponse token(String username, String password) {
         return authzClient.obtainAccessToken(username, password);

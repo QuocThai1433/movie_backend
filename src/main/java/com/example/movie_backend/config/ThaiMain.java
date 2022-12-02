@@ -1,4 +1,4 @@
-package com.example.movie_backend.config.security;
+package com.example.movie_backend.config;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +14,9 @@ public class ThaiMain {
     public ThaiMain(ThaiConfig thaiConfig) {
         this.thaiConfig = thaiConfig;
     }
+
     @GetMapping("/")
-    public ThaiConfig get(){
+    public ThaiConfig get() {
         return thaiConfig;
     }
 

@@ -16,9 +16,9 @@ import java.util.Objects;
 @EnableWebSecurity
 @Configuration
 public class CustomSecurityConfiguration {
-    private final CommonProperties commonProperties;
+    private final com.example.movie_backend.config.security.CommonProperties commonProperties;
 
-    public CustomSecurityConfiguration(CommonProperties commonProperties) {
+    public CustomSecurityConfiguration(com.example.movie_backend.config.security.CommonProperties commonProperties) {
         this.commonProperties = commonProperties;
     }
 
@@ -39,7 +39,6 @@ public class CustomSecurityConfiguration {
     }
 
     /**
-     *
      * @param http
      * @throws Exception
      */
@@ -54,7 +53,6 @@ public class CustomSecurityConfiguration {
     }
 
     /**
-     *
      * @param http
      * @throws Exception
      */

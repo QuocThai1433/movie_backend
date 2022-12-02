@@ -1,4 +1,4 @@
-package com.example.movie_backend.config.security;
+package com.example.movie_backend.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -27,8 +27,7 @@ public class ThaiConfig {
     private Clazz clazz;
 
     @Data
-    static public class Clazz
-    {
+    static public class Clazz {
         @JsonProperty("name")
         private String name;
 

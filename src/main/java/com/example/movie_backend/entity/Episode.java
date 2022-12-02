@@ -11,19 +11,19 @@ import javax.persistence.*;
 @Entity
 public class Episode {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @Column (name = "episode_count")
+    @Column(name = "episode_count")
     private Integer episodeCount;
 
-    @Column (name = "poster_url")
+    @Column(name = "poster_url")
     private String posterUrl;
 
-    @Column (name = "video_url")
+    @Column(name = "video_url")
     private String videoUrl;
 
-    @Column (name = "movie_id")
+    @Column(name = "movie_id")
     private String movieId;
 }
