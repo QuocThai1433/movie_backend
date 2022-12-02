@@ -5,10 +5,12 @@ import com.example.movie_backend.entity.Evaluation;
 import com.example.movie_backend.services.interfaces.IBaseService;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class EvaluationController extends BaseController<Evaluation, Integer> implements IEvaluationController {
+import java.util.UUID;
 
-    public EvaluationController(IBaseService<Evaluation, Integer> service) {
+@RestController
+public class EvaluationController extends BaseController<Evaluation, UUID> implements IEvaluationController {
+
+    public EvaluationController(IBaseService<Evaluation, UUID> service) {
         super(service);
     }
 

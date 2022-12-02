@@ -7,6 +7,7 @@ import org.keycloak.adapters.springboot.KeycloakSpringBootProperties;
 import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
+import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.authorization.client.AuthzClient;
 import org.keycloak.authorization.client.Configuration;
@@ -49,10 +50,10 @@ public class KeycloakService implements IKeycloakService {
         Response response = usersResource.create(userRepresentation);
         String userId = CreatedResponseUtil.getCreatedId(response);
 
-        usersResource.get(userId)
-                .resetPassword(
-                        buildPassword(request.getPassword())
-                );
+        UserResource userResource = usersResource.get(userId);
+        userResource.resetPassword(
+                buildPassword(request.getPassword())
+        );
 
         return UUID.fromString(userId);
     }

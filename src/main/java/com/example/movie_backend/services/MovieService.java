@@ -6,9 +6,10 @@ import com.example.movie_backend.services.interfaces.IMovieService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
-public class MovieService extends BaseService<Movie, Integer> implements IMovieService {
+public class MovieService extends BaseService<Movie, UUID> implements IMovieService {
     private final MovieRepository movieRepository;
 
     public MovieService(MovieRepository movieRepository) {

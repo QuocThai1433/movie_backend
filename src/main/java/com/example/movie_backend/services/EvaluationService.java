@@ -5,9 +5,11 @@ import com.example.movie_backend.services.interfaces.IEvaluationService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
-public class EvaluationService extends BaseService<Evaluation, Integer> implements IEvaluationService {
-    public EvaluationService(JpaRepository<Evaluation, Integer> repository) {
+public class EvaluationService extends BaseService<Evaluation, UUID> implements IEvaluationService {
+    public EvaluationService(JpaRepository<Evaluation, UUID> repository) {
         super(repository);
     }
 }

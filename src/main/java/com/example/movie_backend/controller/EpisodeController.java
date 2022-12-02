@@ -6,10 +6,12 @@ import com.example.movie_backend.services.interfaces.IBaseService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 
-public class EpisodeController extends BaseController<Episode, Integer> implements IEpisodeController {
-    public EpisodeController(IBaseService<Episode, Integer> service) {
+public class EpisodeController extends BaseController<Episode, UUID> implements IEpisodeController {
+    public EpisodeController(IBaseService<Episode, UUID> service) {
         super(service);
     }
 
