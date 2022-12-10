@@ -25,8 +25,15 @@ public class KeycloakService implements IKeycloakService {
     private final Keycloak keycloak;
 
     public KeycloakService(KeycloakSpringBootProperties properties) {
-        this.authzClient = AuthzClient.create(new Configuration(properties.getAuthServerUrl(), properties.getRealm(),
-                properties.getResource(), properties.getCredentials(), null));
+        this.authzClient = AuthzClient.create(
+                new Configuration(
+                        properties.getAuthServerUrl(),
+                        properties.getRealm(),
+                        properties.getResource(),
+                        properties.getCredentials(),
+                        null
+                )
+        );
         this.keycloak = KeycloakBuilder.builder()
                 .grantType(OAuth2Constants.CLIENT_CREDENTIALS)
                 .realm(properties.getRealm())
@@ -74,7 +81,6 @@ public class KeycloakService implements IKeycloakService {
         passwordCred.setTemporary(false);
         passwordCred.setType(CredentialRepresentation.PASSWORD);
         passwordCred.setValue(password);
-
         return passwordCred;
     }
 }

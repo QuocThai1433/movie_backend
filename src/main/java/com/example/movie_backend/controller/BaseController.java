@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public abstract class BaseController<T, ID> implements IBaseController<T, ID> {
-    private final IBaseService<T,ID> iBaseService;
+    private final IBaseService<T, ID> iBaseService;
 
     protected BaseController(IBaseService<T, ID> iBaseService) {
         this.iBaseService = iBaseService;
@@ -20,7 +20,7 @@ public abstract class BaseController<T, ID> implements IBaseController<T, ID> {
 
     @Override
     public ResponseEntity<T> update(ID id, T entity) {
-        return ResponseEntity.ok(iBaseService.update(id,entity));
+        return ResponseEntity.ok(iBaseService.update(id, entity));
     }
 
     @Override

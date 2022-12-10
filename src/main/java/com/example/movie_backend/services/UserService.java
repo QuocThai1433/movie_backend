@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class UserService extends BaseService<User,UUID> implements IUserService {
+public class UserService extends BaseService<User, UUID> implements IUserService {
     private final IKeycloakService iKeycloakService;
     private final UserRepository userRepository;
 
